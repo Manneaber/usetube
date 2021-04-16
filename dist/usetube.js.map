@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"version":3,"file":"usetube.js","sourceRoot":"","sources":["../src/usetube.ts"],"names":[],"mappings":";;;AAAA,mDAA6C;AAW3C,yBAXK,wBAAc,CAWL;AAVhB,uDAAiD;AAW/C,2BAXK,0BAAgB,CAWL;AAVlB,yDAAmD;AAWjD,4BAXK,2BAAiB,CAWL;AAVnB,+CAAyC;AAWvC,uBAXK,sBAAY,CAWL;AAVd,+CAAyC;AAWvC,uBAXK,sBAAY,CAWL;AAVd,yDAAmD;AAWjD,4BAXK,2BAAiB,CAWL;AAVnB,iDAA2C;AAWzC,wBAXK,uBAAa,CAWL;AAVf,6CAAuC;AAWrC,sBAXK,qBAAW,CAWL;AAVb,yDAAmD;AAWjD,4BAXK,2BAAiB,CAWL"}
+=======
+{"version":3,"file":"usetube.js","sourceRoot":"","sources":["../src/usetube.ts"],"names":[],"mappings":";;;AAAA,qDAA6C;AAU3C,yBAVK,wBAAc,CAUL;AAThB,yDAAiD;AAU/C,2BAVK,0BAAgB,CAUL;AATlB,2DAAmD;AAUjD,4BAVK,2BAAiB,CAUL;AATnB,iDAAyC;AAUvC,uBAVK,sBAAY,CAUL;AATd,iDAAyC;AAUvC,uBAVK,sBAAY,CAUL;AATd,2DAAmD;AAUjD,4BAVK,2BAAiB,CAUL;AATnB,mDAA2C;AAUzC,wBAVK,uBAAa,CAUL;AATf,+CAAuC;AAUrC,sBAVK,qBAAW,CAUL"}
+>>>>>>> 61e8d78 (Add support for Typescript project)

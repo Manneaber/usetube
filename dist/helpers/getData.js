@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -108,4 +109,58 @@ function getData(urlstring) {
     });
 }
 exports.default = getData;
+=======
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const axios_1 = require("axios");
+const decodeHex_1 = require("./decodeHex");
+const findVal_1 = require("./findVal");
+async function getData(urlstring) {
+    var _a, _b;
+    const dataRegex = /var\ ytInitialData\ \=\ \'(.*)\'\;<\/script>/;
+    const dateRegex = /publishDate":"(.*)","ownerChannelName/;
+    const apiRegex = /"innertubeApiKey":"(.*?)"/;
+    let url = new URL(urlstring);
+    let isAjax = false;
+    let isDate = false;
+    let body;
+    if (url.searchParams.get('token')) {
+        isAjax = true;
+    }
+    if (url.searchParams.get('type') === 'date') {
+        isDate = true;
+    }
+    let headers;
+    if (isAjax) {
+        const data = { context: { client: { clientName: 'WEB', clientVersion: '2.20210401.08.00' } }, continuation: url.searchParams.get('token') };
+        body = (await axios_1.default({ method: 'post', url: urlstring, data: data })).data;
+        // let fs = require('fs'); fs.writeFile('raw.json', JSON.stringify(body), (e)=>{console.log(e)})
+        return { items: findVal_1.default(body, 'continuationItems'), token: findVal_1.default(body, 'token') };
+    }
+    else {
+        headers = {
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'x-youtube-client-name': 1,
+                'x-youtube-client-version': '2.20200911.04.00',
+                'User-Agent': 'Mozilla/5.0 (Linux; Android 5.0; SM-G900P Build/LRX21T) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.87 Mobile Safari/537.36',
+            }
+        };
+        body = (await axios_1.default.get(urlstring, headers)).data;
+        if (isDate) {
+            const raw = ((_a = dateRegex.exec(body)) === null || _a === void 0 ? void 0 : _a[1]) || '{}';
+            return raw;
+        }
+        else {
+            const raw = ((_b = dataRegex.exec(body)) === null || _b === void 0 ? void 0 : _b[1]) || '{}';
+            const apikey = apiRegex.exec(body)[1] || '';
+            // let fs = require('fs'); fs.writeFile('raw.json', decodeHex(raw), (e)=>{console.log(e)})
+            let data = JSON.parse(decodeHex_1.default(raw));
+            data.apikey = apikey;
+            return data;
+        }
+    }
+}
+exports.default = getData;
+>>>>>>> 61e8d78 (Add support for Typescript project)
 //# sourceMappingURL=getData.js.map

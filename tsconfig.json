@@ -4,9 +4,10 @@
     "rootDirs": ["./src"],
     "sourceMap": true,
     "module": "commonjs",
+    "declaration": true,
     "esModuleInterop": false,
-    "target": "es5",
-    "lib": ["es5", "es2015.promise", "DOM", "ScriptHost"],
+    "target": "ES2018",
+    "lib": ["ES2018", "DOM", "DOM.Iterable", "ScriptHost"],
     "moduleResolution": "node"
   },
   "include": ["src/**/*"],

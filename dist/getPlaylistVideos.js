@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -112,4 +113,45 @@ function getPlaylistVideos(id, speedDate) {
     });
 }
 exports.default = getPlaylistVideos;
+=======
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const getData_1 = require("./helpers/getData");
+const findVal_1 = require("./helpers/findVal");
+const formatVideo_1 = require("./helpers/formatVideo");
+async function getPlaylistVideos(id, speedDate) {
+    const data = await getData_1.default('https://m.youtube.com/playlist?list=' + id);
+    const apikey = data.apikey;
+    const items = findVal_1.default(data, 'playlistVideoListRenderer').contents;
+    let token = findVal_1.default(data, 'token');
+    let videos = [];
+    for (let i = 0; i < items.length; i++) {
+        if (items[i]) {
+            videos.push(await formatVideo_1.default(items[i], speedDate));
+        }
+    }
+    while (token) {
+        try {
+            let nextData = await getData_1.default('https://www.youtube.com/youtubei/v1/browse?key=' + apikey + '&token=' + token);
+            let nextVideos = nextData.items;
+            token = nextData.token;
+            for (let i = 0; i < nextVideos.length; i++) {
+                if (nextVideos[i]) {
+                    const formated = await formatVideo_1.default(nextVideos[i], speedDate);
+                    if (formated) {
+                        videos.push(formated);
+                    }
+                }
+            }
+        }
+        catch (e) {
+            console.log('getPlaylistVideos failed');
+            console.log(e);
+            token = '';
+        }
+    }
+    return videos;
+}
+exports.default = getPlaylistVideos;
+>>>>>>> 61e8d78 (Add support for Typescript project)
 //# sourceMappingURL=getPlaylistVideos.js.map
