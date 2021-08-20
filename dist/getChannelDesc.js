@@ -5,7 +5,7 @@ async function getChannelDesc(id) {
     var _a, _b;
     try {
         const data = await getData_1.default('https://m.youtube.com/channel/' + id + '/videos');
-        let description = ((_b = (_a = data.metadata) === null || _a === void 0 ? void 0 : _a.channelMetadataRenderer) === null || _b === void 0 ? void 0 : _b.description) || '';
+        const description = ((_b = (_a = data.metadata) === null || _a === void 0 ? void 0 : _a.channelMetadataRenderer) === null || _b === void 0 ? void 0 : _b.description) || '';
         return description;
     }
     catch (e) {

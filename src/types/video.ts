@@ -5,4 +5,4 @@ export default interface Video {
   artist:                string,
   duration:              number,
   publishedAt:           Date,
-}
+};

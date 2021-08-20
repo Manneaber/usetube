@@ -35,8 +35,8 @@ function getDateFromText(dateTxt) {
     if (!dateTxt || digit === 0) {
         return new Date(Date.now());
     }
-    for (let i in unit) {
-        for (let y in unit[i].terms) {
+    for (const i in unit) {
+        for (const y in unit[i].terms) {
             if (dateTxt.includes(unit[i].terms[y])) {
                 const secondsSince = unit[i].factor * digit;
                 return new Date(Date.now() - secondsSince);

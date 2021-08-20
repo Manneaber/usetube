@@ -1,4 +1,4 @@
-import Video from './video'
+import Video from './video';
 
 export default interface SearchResult {
   videos:                Video[],

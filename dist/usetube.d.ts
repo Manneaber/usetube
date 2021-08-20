@@ -6,4 +6,5 @@ import getVideoDesc from './getVideoDesc';
 import getVideosFromDesc from './getVideosFromDesc';
 import searchChannel from './searchChannel';
 import searchVideo from './searchVideo';
-export { getChannelDesc, getChannelVideos, getPlaylistVideos, getVideoDate, getVideoDesc, getVideosFromDesc, searchChannel, searchVideo, };
+import getVideoSubtitles from './getVideoSubtitles';
+export { getChannelDesc, getChannelVideos, getPlaylistVideos, getVideoDate, getVideoDesc, getVideosFromDesc, searchChannel, searchVideo, getVideoSubtitles, };

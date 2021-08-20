@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 function findVal(object, key) {
-    var value;
+    let value;
     Object.keys(object).some(function (k) {
         if (k === key) {
             value = object[k];
